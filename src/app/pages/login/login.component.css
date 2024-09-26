@@ -2,69 +2,9 @@
     color: var(--secondary-color);
 }
 
-.login-container {
-    height: 100vh;
-    display: flex;
-    width: 50%;
-    margin: auto;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.logo-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.logo-container img{
-    width: 35%;
-    border-radius: 36px;
-}
-
-form{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-}
-
-form input{
-    width: 60%;
-    background: none;
-    border: none;
-    border-bottom: 2px solid var(--primary-color);
-    text-indent: 5px;
-    height: 42px;
-}
-
-form input::placeholder{
-    color: var(--secondary-color);
-}
-
-form button{
-    height: 42px;
-    border: none;
-    border-radius: 20px;
-}
-
-form .login-button{
+.white-button{
     width: 50%;
     background-color: var(--secondary-color);
     color: var(--primary-color);
 }
 
-form a{
-    color: var(--primary-color);
-}
-
-form .register-button{
-    width: 35%;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-}

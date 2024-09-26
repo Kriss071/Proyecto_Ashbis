@@ -6,11 +6,78 @@
     --secondary-color: #ffff;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
+    color: var(--secondary-color);
 }
 
-body{
+body {
     background-color: var(--background-color);
+}
+
+/* === Formulario Login y Registro === */
+
+.auth-container {
+    display: flex;
+    width: 50%;
+    height: 100vh;
+    margin: 50px auto 50px auto;
+    
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.auth-logo-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.auth-logo-container img{
+    width: 35%;
+    border-radius: 36px;
+}
+
+.form-auth {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.form-auth input {
+    width: 60%;
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--primary-color);
+    text-indent: 5px;
+    height: 42px;
+}
+
+.form-auth a{
+    color: var(--primary-color);
+}
+
+
+.form-auth input::placeholder {
+    color: var(--secondary-color);
+}
+
+.button-auth {
+    height: 42px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.red-button {
+    width: 35%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
 }

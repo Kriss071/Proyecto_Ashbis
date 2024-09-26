@@ -1,16 +1,16 @@
-<div class="login-container">
-    <div class="logo-container">
+<div class="auth-container">
+    <div class="auth-logo-container">
         <img src="img/logo.jpg" alt="">
         <h2>Bienvenido!</h2>  
     </div>
 
-    <form action="">
+    <form action="" class="form-auth">
         <h1>Iniciar Sesión</h1>
         <input type="text" placeholder="Nombre de Usuario">
         <input type="text" placeholder="Contraseña">
-        <button class="login-button">Ingresar</button>
+
+        <button class="button-auth white-button" type="submit" (click)="login($event)">Ingresar</button>
         <a href="">Olvide mi contraseña</a>
-        <button class="register-button">Crear</button>
-        <button>Hola</button>
     </form>
+    <button class="button-auth red-button" routerLink="/register">Crear</button>
 </div>
