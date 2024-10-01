@@ -1,0 +1,20 @@
+.tabs-container{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--background-color);
+}
+
+.tabs-container ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.tabs-container ul li {
+    display: flex;
+    margin: 10px 0;
+}
+
+.tabs-container ul li a:hover{
+    background-color: blue;
+}

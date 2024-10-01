@@ -1,0 +1,9 @@
+<div class="home-container">    
+    <div *ngIf="selectedTab==1">
+
+    </div>
+    <div *ngIf="selectedTab==4">
+        <app-user-profile></app-user-profile>
+    </div>
+    <app-tabs (tabIndex)="tabSelect($event)"></app-tabs>
+</div>
