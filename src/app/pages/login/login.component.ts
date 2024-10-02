@@ -1,26 +1,38 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { RouterLink } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+	selector: 'app-login',
+	standalone: true,
+	imports: [RouterLink, ReactiveFormsModule],
+	templateUrl: './login.component.html',
+	styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
 
-  constructor(public authSvc: AuthService){}
+	constructor(public authSvc: AuthService) { }
 
-  login(event: Event) {
-    event.preventDefault()
-    const user = { email: this.email, password: this.password };
-    this.authSvc.login(user).subscribe((data) => {
-      console.log(data);
-    });
-  }
+	loginForm = new FormGroup({
+		email: new FormControl<string>('', [Validators.required, Validators.email]),
+		password: new FormControl<string>('', [Validators.required])
+	})
+
+	onSubmit() {
+		const email = this.loginForm.value.email;
+		const password = this.loginForm.value.password;
+
+		if (email && password) {
+			this.authSvc.login(email, password).subscribe({
+				next: (response) => {
+					console.log('Sesión iniciada (Angular): ' + response);
+				},
+				error: (error) => {
+					console.error('Error al iniciar sesión (Angular): ' + error)
+				}
+			})
+		}
+	}
 
 }

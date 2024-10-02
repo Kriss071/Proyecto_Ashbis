@@ -34,11 +34,12 @@ export class RegisterComponent {
 		if (email && password){
 			this.authSvc.register(email, password).subscribe({
 				next: (response) => {
-					console.log('Usuario registrado (Angular): ' + response);
+					console.log('Usuario registrado (Angular): ' + JSON.stringify(response));
 				},
-				error: (error) => {
-					console.error('Error al registrar usuario (Angular): ' + error)
+				error: (e) => {
+					console.log('Error al registrar usuario (Angular): ' + e.error.error)
 				}
+				
 			})
 		}
 			

@@ -4,12 +4,12 @@
         <h2>Bienvenido!</h2>  
     </div>
 
-    <form action="" class="form-auth">
+    <form class="form-auth" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <h1>Iniciar Sesión</h1>
-        <input type="text" placeholder="Nombre de Usuario">
-        <input type="text" placeholder="Contraseña">
+        <input type="text" placeholder="Nombre de Usuario" formControlName="email">
+        <input type="text" placeholder="Contraseña" formControlName="password">
 
-        <button class="button-auth white-button" type="submit" (click)="login($event)" routerLink="/home">Ingresar</button>
+        <button class="button-auth white-button" type="submit" [disabled]="!loginForm.valid">Ingresar</button>
         <a href="">Olvide mi contraseña</a>
     </form>
     <button class="button-auth red-button" routerLink="/register">Crear</button>
