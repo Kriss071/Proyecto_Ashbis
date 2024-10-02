@@ -1,42 +1,46 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { disconnect } from 'process';
-import { Conditional } from '@angular/compiler';
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+	selector: 'app-register',
+	standalone: true,
+	imports: [RouterLink, ReactiveFormsModule],
+	templateUrl: './register.component.html',
+	styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  name: string = '';
-  lastName: string = '';
-  phone: number = 0;
-  direction: string = '';
-  region: string = '';
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
+	// name: string = '';
+	// lastName: string = '';
+	// phone: number = 0;
+	// direction: string = '';
+	// region: string = '';
+	// email: string = '';
+	// password: string = '';
+	// confirmPassword: string = '';
 
-  constructor(public authSvc: AuthService){}
+	constructor(private authSvc: AuthService) { }
 
-  register(){
-    const user = {name: this.name, 
-                  lastName: this.lastName,
-                  phone: this.phone,
-                  direction: this.direction,
-                  region: this.region,
-                  email: this.email,
-                  password: this.password,
-                  confirmPassword: this.confirmPassword
-                  }
-            
-    this.authSvc.register(user).subscribe((data) => {
-      console.log(data)
-    })
+	registerForm = new FormGroup({
+		email: new FormControl<string>('', [Validators.required, Validators.email]),
+		password: new FormControl<string>('', [Validators.required])
+	})
 
-  }
+	onSubmit() {
+		const email = this.registerForm.value.email;
+		const password = this.registerForm.value.password;
+
+		if (email && password){
+			this.authSvc.register(email, password).subscribe({
+				next: (response) => {
+					console.log('Usuario registrado (Angular): ' + response);
+				},
+				error: (error) => {
+					console.error('Error al registrar usuario (Angular): ' + error)
+				}
+			})
+		}
+			
+	}
 }

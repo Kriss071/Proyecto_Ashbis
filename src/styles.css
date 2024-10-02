@@ -89,6 +89,10 @@ body {
     color: var(--secondary-color);
 }
 
+.red-button:disabled{
+    background-color: #730000;
+}
+
 /* === MQ Login/Registro === */
 
 @media (max-width: 880px){
